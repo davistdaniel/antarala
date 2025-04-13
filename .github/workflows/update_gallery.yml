@@ -1,0 +1,31 @@
+name: Update Gallery on Image Upload
+
+on:
+  push:
+    paths:
+      - 'images/**'
+      - 'update_gallery.py'
+
+jobs:
+  update-gallery:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout-repo
+        uses: actions/checkout@v3
+
+      - name: Python set-up
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run update_gallery.py
+        run: python update_gallery.py
+
+      - name: Commit-HTML
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Auto-update gallery on image upload" || echo "No changes to commit"
+          git push
