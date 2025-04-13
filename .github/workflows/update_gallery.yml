@@ -28,4 +28,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
           git commit -m "Auto-update gallery on image upload" || echo "No changes to commit"
-          git push
+          git push https://x-access-token:${{ secrets.antarala_access }}@github.com/${{ github.repository }} HEAD:main
