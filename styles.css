@@ -1,0 +1,117 @@
+body {
+  font-family: Barlow, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(270deg, #2a7b9b, #57c785, #eddd53, #2a7b9b);
+  background-size: 800% 800%;
+  animation: gradientShift 60s ease infinite;
+  color: #333;
+  transition: background 0.5s ease;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards; /* Fade-in effect on page load */
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: color 0.3s ease;
+}
+
+.gallery {
+  column-count: 4;
+  column-gap: 1rem;
+  padding: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: scale(0.98);
+  animation: fadeInImage 1s ease-out forwards; 
+}
+
+.gallery img:hover {
+  transform: scale(4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1000px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    column-count: 1;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(270deg, #3c5a64, #466e5a, #a0963c, #3c5a64);
+    background-size: 800% 800%;
+    animation: gradientShift 60s ease infinite;
+    color: #eee;
+  }
+
+  h1 {
+    color: #f0f0f0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+
+  .gallery img {
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+  }
+}
+
+.logo {
+  width: 500px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto;
+}
