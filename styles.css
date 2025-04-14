@@ -8,6 +8,8 @@ body {
   animation: gradientShift 60s ease infinite;
   color: #333;
   transition: background 0.5s ease;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards; /* Fade-in effect on page load */
 }
 
 h1 {
@@ -33,14 +35,13 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
   opacity: 0;
-  transform: scale(0.97);
-  animation: fadeInSpring 0.5s ease-out forwards;
+  transform: scale(0.98);
+  animation: fadeInImage 1s ease-out forwards; 
 }
 
 .gallery img:hover {
-  transform: scale(1.015);
+  transform: scale(4);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -56,22 +57,6 @@ h1 {
   }
 }
 
-@keyframes fadeInSpring {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  60% {
-    transform: scale(1.05);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -83,6 +68,26 @@ h1 {
 
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
