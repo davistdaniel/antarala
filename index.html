@@ -29,6 +29,9 @@
             const img = document.createElement('img');
             img.src = src;
             img.alt = src.split('/').pop();
+            img.onload = () => {
+                img.classList.add('loaded');
+            };
             gallery.appendChild(img);
         });
     </script>
