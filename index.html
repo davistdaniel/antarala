@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Antarāla</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Antarāla</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <div class="logo-container">
-        <img src="logo.png" alt="Antarāla Logo" class="logo">
-    </div>
-    <div class="gallery" id="gallery"></div>
-    <footer class="footer">
-        <p>&copy; <span id="year"></span> Davis Thomas Daniel. All rights reserved.</p>
-    </footer>
-    <script src="images.js"></script>
-    <script>
-        const gallery = document.getElementById('gallery');
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-        shuffle(images);
-        images.forEach(src => {
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = src.split('/').pop();
-            img.onload = () => {
-                img.classList.add('loaded');
-            };
-            gallery.appendChild(img);
-        });
-    </script>
+  <div id="loader">Loading...</div>
+
+  <div class="logo-container">
+    <img src="logo.png" alt="Antarāla Logo" class="logo" />
+  </div>
+
+  <div class="gallery" id="gallery"></div>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Davis Thomas Daniel. All rights reserved.</p>
+  </footer>
+
+  <script src="images.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const gallery = document.getElementById('gallery');
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    shuffle(images);
+    images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = src.split('/').pop();
+      img.onload = () => {
+        img.classList.add('loaded');
+      };
+      gallery.appendChild(img);
+    });
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+  </script>
 </body>
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-  });
-</script>
 </html>
